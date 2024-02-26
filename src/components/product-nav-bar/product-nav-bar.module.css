@@ -1,0 +1,13 @@
+/* Pages router does not allow global CSS so we have to use CSS modules */
+.productNav {
+    background-color: rebeccapurple;
+    display: flex;
+    justify-content: space-between;
+    margin-inline: auto;
+    width: 80%;
+    padding: 2rem;
+}
+
+.productLink {
+    color: lightblue;
+}
