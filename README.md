@@ -1,38 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# App router test repo
 
-## Getting Started
+This is a small repo to go with my blog post comparing the pages and app routers in Next.js: https://danaciocan.com/nextjs-pages-vs-app-router
 
-First, run the development server:
+## Pre-requisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+You will need to have the following installed in order to run this code:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Node.js
+1. NVM (node version manager)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Running this code
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+To run this code, do the following in the root of this repo:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Run `nmv use`
+1. Run `npm install`
+1. Run `npm run dev`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Checking the routing
 
-## Learn More
+Once the app is running, you can go to:
 
-To learn more about Next.js, take a look at the following resources:
+1. http://localhost:3000 to visit the homepage
+1. http://localhost:3000/product/1234 to visit the Product page for an imaginary product with ID 1234 - you can change the ID to anything you like and see it update in the UI
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Things to notice
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Global styles are not allowed in the pages router, which means we _have_ to use CSS modules even when we know that the styles don't clash. In the app router, this is not a problem and you can use global CSS in your child components.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Sharing a nav bar between pages in a section is a lot trickier in pages router - it has to be a separate component that manually gets inserted into the page, rather than defining a new `layout.tsx` and putting it in the directory where you'd like it to apply.
